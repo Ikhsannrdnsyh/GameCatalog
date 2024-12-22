@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		018CB0812D114F76000BF7EC /* GameModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 018CB07F2D114F76000BF7EC /* GameModel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		016A361C2D0889080092FA40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,13 +31,14 @@
 		016A36052D0889060092FA40 /* GameCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		016A361B2D0889080092FA40 /* GameCatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		016A36252D0889080092FA40 /* GameCatalogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCatalogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		018CB0802D114F76000BF7EC /* GameModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		016A362D2D0889080092FA40 /* Exceptions for "GameCatalog" folder in "GameCatalog" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				FileSystem/Info.plist,
 			);
 			target = 016A36042D0889060092FA40 /* GameCatalog */;
 		};
@@ -46,16 +51,6 @@
 				016A362D2D0889080092FA40 /* Exceptions for "GameCatalog" folder in "GameCatalog" target */,
 			);
 			path = GameCatalog;
-			sourceTree = "<group>";
-		};
-		016A361E2D0889080092FA40 /* GameCatalogTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GameCatalogTests;
-			sourceTree = "<group>";
-		};
-		016A36282D0889080092FA40 /* GameCatalogUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GameCatalogUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,9 +83,8 @@
 		016A35FC2D0889060092FA40 = {
 			isa = PBXGroup;
 			children = (
+				018CB07F2D114F76000BF7EC /* GameModel.xcdatamodeld */,
 				016A36072D0889060092FA40 /* GameCatalog */,
-				016A361E2D0889080092FA40 /* GameCatalogTests */,
-				016A36282D0889080092FA40 /* GameCatalogUITests */,
 				016A36062D0889060092FA40 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +106,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 016A362E2D0889080092FA40 /* Build configuration list for PBXNativeTarget "GameCatalog" */;
 			buildPhases = (
+				015B84852D10217100A1447B /* ShellScript */,
 				016A36012D0889060092FA40 /* Sources */,
 				016A36022D0889060092FA40 /* Frameworks */,
 				016A36032D0889060092FA40 /* Resources */,
@@ -143,9 +138,6 @@
 			dependencies = (
 				016A361D2D0889080092FA40 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				016A361E2D0889080092FA40 /* GameCatalogTests */,
-			);
 			name = GameCatalogTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +157,6 @@
 			);
 			dependencies = (
 				016A36272D0889080092FA40 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				016A36282D0889080092FA40 /* GameCatalogUITests */,
 			);
 			name = GameCatalogUITests;
 			packageProductDependencies = (
@@ -244,11 +233,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		015B84852D10217100A1447B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		016A36012D0889060092FA40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018CB0812D114F76000BF7EC /* GameModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,8 +301,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3TJ7Q67633;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GameCatalog/Info.plist;
+				INFOPLIST_FILE = GameCatalog/FileSystem/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,8 +330,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3TJ7Q67633;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GameCatalog/Info.plist;
+				INFOPLIST_FILE = GameCatalog/FileSystem/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -569,6 +582,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		018CB07F2D114F76000BF7EC /* GameModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				018CB0802D114F76000BF7EC /* GameModel.xcdatamodel */,
+			);
+			currentVersion = 018CB0802D114F76000BF7EC /* GameModel.xcdatamodel */;
+			path = GameModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 016A35FD2D0889060092FA40 /* Project object */;
 }
