@@ -7,7 +7,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need acces to choose a Profile Picture</string>
 	<key>API_KEY</key>
-	<string>ee87ceb1f20a4812b237ff3f53d54f29</string>
+	<string>xxxxxxxx</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
